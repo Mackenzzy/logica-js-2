@@ -7,12 +7,13 @@ console.log (numeroSecreto)
 function ExibirTextoNaTela(tag, texto){
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate:1.2} );
 }
 exibirMensagemInicial();
 
 function exibirMensagemInicial(){
     ExibirTextoNaTela('h1','Jogo do número secreto');
-    ExibirTextoNaTela('p','Escolha um número entre 1 e 10 e tente advinhar qual é o número secreto');
+    ExibirTextoNaTela('p','Escolha um número entre 1 e 10 para advinhar qual é o número secreto');
     document.getElementById('chute').removeAttribute('disabled')
 }
 
