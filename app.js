@@ -1,3 +1,5 @@
+let listaDeNumerosSorteados = [];
+let numeroLimite = 10;
 let numeroSecreto = gerarNumeroSecreto();
 let tentativas = 1;
 console.log (numeroSecreto)
@@ -21,11 +23,23 @@ function verificarChute(){
 }
 
 function gerarNumeroSecreto(){
-    return parseInt(Math.random() * 10 + 1);
+    numeroEscolhido  = parseInt(Math.random() * numeroLimite + 1);
+    let quantidadeDeElementosNalista = listaDeNumerosSorteados.length;
+    if (quantidadeDeElementosNalista == numeroLimite){
+        listaDeNumerosSorteados=[];
+    }
+    
+    if (listaDeNumerosSorteados.includes(numeroEscolhido)){
+        return gerarNumeroSecreto()
+    }else {
+        listaDeNumerosSorteados.push(numeroEscolhido)
+        return numeroEscolhido
+    }
 }
 
 function verificarChute(){
     let chute = document.querySelector('input').value;
+    
     
 
     if (chute == numeroSecreto){
