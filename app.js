@@ -1,4 +1,5 @@
 let numeroSecreto = gerarNumeroSecreto();
+let tentativas = 1;
 console.log (numeroSecreto)
 
 function ExibirTextoNaTela(tag, texto){
@@ -19,9 +20,20 @@ function gerarNumeroSecreto(){
 
 function verificarChute(){
     let chute = document.querySelector('input').value;
+    
+
     if (chute == numeroSecreto){
-        console.log ('parabens')
+        let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+        let mensagemTentativas = `Você descobriu com ${tentativas} ${palavraTentativa}`;
+        ExibirTextoNaTela('h1', 'Parabéns, você acertou')
+        ExibirTextoNaTela('p', mensagemTentativas)
     }else{
-        console.log ('errou otario')
+        ExibirTextoNaTela('h1', 'ERROU')
+        if ( chute < numeroSecreto){
+            ExibirTextoNaTela('p', 'O numero secreto é maior')
+        }else{
+            ExibirTextoNaTela('p', 'o numero secreto é menor')
+        }
+    tentativas++;
     }
 }
